@@ -46,7 +46,7 @@ router.delete('/:id', async (req, res) => {
     const saleId = req.params.id;
 
     // Encuentra y elimina la venta
-    const sale = await Sale.findById(saleId);
+    const sale = await Venta.findById(saleId);
     if (!sale) {
       return res.status(404).json({ message: 'Venta no encontrada' });
     }
