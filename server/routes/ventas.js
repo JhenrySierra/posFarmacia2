@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const Venta = require("../models/Venta");
+const ArchivedSale = require("../models/Archived");
 
 // Get all sales
 router.get("/", async (req, res) => {
@@ -36,6 +37,43 @@ router.post("/", async (req, res) => {
     res.status(201).json(newSale);
   } catch (err) {
     res.status(400).json({ message: err.message });
+  }
+});
+
+// Endpoint para eliminar una venta, archivarla y devolver cantidades a productos
+router.delete('/:id', async (req, res) => {
+  try {
+    const saleId = req.params.id;
+
+    // Encuentra y elimina la venta
+    const sale = await Sale.findById(saleId);
+    if (!sale) {
+      return res.status(404).json({ message: 'Venta no encontrada' });
+    }
+
+    // Archiva la venta
+    const archivedSale = new ArchivedSale({
+      items: sale.items,
+      total: sale.total,
+    });
+
+    await archivedSale.save();
+
+    // Devuelve las cantidades a los productos
+    for (const item of sale.items) {
+      await Product.updateOne(
+        { _id: item._id },
+        { $inc: { cantidad: item.cantidad } }
+      );
+    }
+
+    // Elimina la venta
+    await Sale.findByIdAndDelete(saleId);
+
+    res.status(200).json({ message: 'Venta archivada y cantidades restauradas' });
+  } catch (error) {
+    console.error('Error processing request:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

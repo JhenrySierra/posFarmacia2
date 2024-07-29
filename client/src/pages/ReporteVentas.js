@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
-axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/"; // Set this to your backend server URL
+axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/"; // Set this to your backend server URL -- 
 
 function SalesReportPage() {
   const [sales, setSales] = useState([]);
@@ -31,7 +31,25 @@ function SalesReportPage() {
   };
 
   const handleGoToInicio = () => {
-    navigate("/inicio"); // Navigate to the Sales Report page
+    navigate("/inicio"); // Navigate to the Home page
+  };
+
+  const handleArchiveSale = (saleId) => {
+    axios
+      .delete(`/api/ventas/${saleId}`)
+      .then(() => {
+        // Refresh the sales data
+        axios
+          .get("/api/ventas")
+          .then((response) => setSales(response.data))
+          .catch((error) => console.error(error));
+      })
+      .catch((error) => {
+        console.error(
+          "Error archiving sale:",
+          error.response ? error.response.data : error.message
+        );
+      });
   };
 
   // Inline CSS styles
@@ -136,6 +154,7 @@ function SalesReportPage() {
             <th style={thStyle}>Fecha</th>
             <th style={thStyle}>Detalles</th>
             <th style={thStyle}>Total</th>
+            <th style={thStyle}>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -172,11 +191,26 @@ function SalesReportPage() {
                     maximumFractionDigits: 2,
                   })}
                 </td>
+                <td style={tdStyle}>
+                  <button
+                    onClick={() => handleArchiveSale(sale._id)}
+                    style={{
+                      padding: "5px 10px",
+                      backgroundColor: "#f44336",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    ARCHIVAR
+                  </button>
+                </td>
               </tr>
             ))
           ) : (
             <tr>
-              <td colSpan="3" style={tdStyle}>
+              <td colSpan="4" style={tdStyle}>
                 No sales found
               </td>
             </tr>
@@ -196,6 +230,7 @@ function SalesReportPage() {
                 })}
               </strong>
             </td>
+            <td style={tdStyle}></td>
           </tr>
         </tbody>
         <tfooter></tfooter>

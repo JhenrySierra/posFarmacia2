@@ -12,6 +12,6 @@ const ventaSchema = new mongoose.Schema({
   total: Number,
 });
 
-const Venta = mongoose.model("Venta", ventaSchema);
+const Venta = mongoose.model("Venta", ventaSchema, "ventas");
 
 module.exports = Venta;
