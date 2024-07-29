@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const Venta = require("../models/Venta");
+const Product = require("../models/Product");
 const ArchivedSale = require("../models/Archived");
 
 // Get all sales
