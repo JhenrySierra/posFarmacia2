@@ -10,7 +10,7 @@ function InventoryPage() {
   const [amountPaid, setAmountPaid] = useState("");
   const [change, setChange] = useState(0);
   const navigate = useNavigate();
-  const printRef = useRef();
+  // const printRef = useRef();
 
   useEffect(() => {
     axios
