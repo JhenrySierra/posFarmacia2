@@ -42,14 +42,17 @@ router.post("/", async (req, res) => {
 });
 
 // Endpoint para eliminar una venta, archivarla y devolver cantidades a productos
-router.delete('/:id', async (req, res) => {
+router.delete('/', async (req, res) => {
   try {
-    const saleId = req.params.id;
+    const { saleId } = req.body;  // Obtener el ID de la venta del cuerpo de la solicitud
+
+    // Verificar que el ID esté presente
+    if (!saleId) {
+      return res.status(400).json({ message: 'El ID de la venta es requerido' });
+    }
 
     // Encuentra y elimina la venta
     const sale = await Venta.findById(saleId);
-    console.log(`This is the sale id received through params ${saleId}`);
-
     if (!sale) {
       return res.status(404).json({ message: 'Venta no encontrada' });
     }

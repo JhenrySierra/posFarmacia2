@@ -34,25 +34,24 @@ function SalesReportPage() {
     navigate("/inicio"); // Navigate to the Home page
   };
 
-  const handleArchiveSale = (saleId) => {
-    axios
-      .delete(`/api/ventas/${saleId}`)
-      .then(() => {
-        // Refresh the sales data
+const handleArchiveSale = (saleId) => {
+  axios
+    .delete("/api/ventas", { data: { saleId } }) // Pasar el ID de la venta en el cuerpo
+    .then(() => {
+      // Refresh the sales data
+      axios
+        .get("/api/ventas")
+        .then((response) => setSales(response.data))
+        .catch((error) => console.error(error));
+    })
+    .catch((error) => {
+      console.error(
+        "Error archiving sale:",
+        error.response ? error.response.data : error.message
+      );
+    });
+};
 
-        console.log(`This is the sale id sent to the API ${saleId}`);
-        axios
-          .get("/api/ventas")
-          .then((response) => setSales(response.data))
-          .catch((error) => console.error(error));
-      })
-      .catch((error) => {
-        console.error(
-          "Error archiving sale:",
-          error.response ? error.response.data : error.message
-        );
-      });
-  };
 
   // Inline CSS styles
   const containerStyle = {
