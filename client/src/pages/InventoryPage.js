@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/";
 
 function InventoryPage() {
   const [items, setItems] = useState([]);

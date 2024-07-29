@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal"; // Import react-modal
 
-axios.defaults.baseURL = "http://localhost:5000"; // Set this to your backend server URL
+axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/"; // Set this to your backend server URL
 
 function InventoryPage() {
   const [items, setItems] = useState([]);

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 
-axios.defaults.baseURL = "http://localhost:5000"; // Set this to your backend server URL
+axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/"; // Set this to your backend server URL
 
 function SalesReportPage() {
   const [sales, setSales] = useState([]);
