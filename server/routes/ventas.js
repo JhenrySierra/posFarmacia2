@@ -68,7 +68,7 @@ router.delete('/:id', async (req, res) => {
     }
 
     // Elimina la venta
-    await Sale.findByIdAndDelete(saleId);
+    await Venta.findByIdAndDelete(saleId);
 
     res.status(200).json({ message: 'Venta archivada y cantidades restauradas' });
   } catch (error) {
