@@ -39,6 +39,8 @@ function SalesReportPage() {
       .delete(`/api/ventas/${saleId}`)
       .then(() => {
         // Refresh the sales data
+
+        console.log(`This is the sale id sent to the API ${saleId}`);
         axios
           .get("/api/ventas")
           .then((response) => setSales(response.data))

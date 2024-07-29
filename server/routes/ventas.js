@@ -48,6 +48,8 @@ router.delete('/:id', async (req, res) => {
 
     // Encuentra y elimina la venta
     const sale = await Venta.findById(saleId);
+    console.log(`This is the sale id received through params ${saleId}`);
+
     if (!sale) {
       return res.status(404).json({ message: 'Venta no encontrada' });
     }
