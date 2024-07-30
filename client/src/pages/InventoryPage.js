@@ -210,7 +210,7 @@ function InventoryPage() {
               .join("")}
             <tr>
               <td colspan="3"><strong>Total</strong></td>
-              <td><strong>$${total.toFixed(2)}</strong></td>
+              <td><strong>$${total}</strong></td>
             </tr>
           </tbody>
         </table>
