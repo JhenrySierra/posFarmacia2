@@ -17,4 +17,5 @@ const ArchivedSaleSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("ArchivedSale", ArchivedSaleSchema, "ventasArchivadas");
+const ArchivedSale = mongoose.model("ArchivedSale", ArchivedSaleSchema, "ventasArchivadas")
+module.exports = ArchivedSale;
