@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-
+import "animate.css"
 axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/"; // Set this to your backend server URL -- 
 
 function SalesReportPage() {
@@ -99,7 +99,7 @@ const handleArchiveSale = (saleId) => {
   const totalSales = sales.reduce((acc, sale) => acc + sale.total, 0);
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className="animate__fadeIn">
       <h1>REPORTE DE VENTAS</h1>
       <button
         onClick={handleGoToInicio}

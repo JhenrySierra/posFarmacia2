@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "animate.css"
 axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/";
 
 function InventoryPage() {
@@ -227,7 +228,7 @@ function InventoryPage() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className="animate__fadeIn">
       <div style={{ width: "60%" }}>
         <div>
           <h1>INVENTARIO</h1>
