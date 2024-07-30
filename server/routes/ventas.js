@@ -44,17 +44,19 @@ router.post("/", async (req, res) => {
 // Endpoint para eliminar una venta, archivarla y devolver cantidades a productos
 router.delete('/', async (req, res) => {
   try {
-    const { saleId } = req.body;  // Obtener el ID de la venta del cuerpo de la solicitud
+    const { saleId } = req.body; // Obtener el ID de la venta del cuerpo de la solicitud
 
     // Verificar que el ID esté presente
     if (!saleId) {
-      return res.status(400).json({ message: 'El ID de la venta es requerido' });
+      return res
+        .status(400)
+        .json({ message: "El ID de la venta es requerido" });
     }
 
     // Encuentra y elimina la venta
     const sale = await Venta.findById(saleId);
     if (!sale) {
-      return res.status(404).json({ message: 'Venta no encontrada' });
+      return res.status(404).json({ message: "Venta no encontrada" });
     }
 
     // Archiva la venta
@@ -65,18 +67,23 @@ router.delete('/', async (req, res) => {
 
     await archivedSale.save();
 
-    // Devuelve las cantidades a los productos
-    for (const item of sale.items) {
-      await Product.updateOne(
-        { _id: item._id },
-        { $inc: { cantidad: item.cantidad } }
-      );
-    }
+    // Crea las operaciones de actualización en un array
+    const bulkOperations = sale.items.map((item) => ({
+      updateOne: {
+        filter: { _id: item._id },
+        update: { $inc: { cantidad: item.cantidad } },
+      },
+    }));
+
+    // Ejecuta las operaciones de actualización en bloque
+    await Product.bulkWrite(bulkOperations);
 
     // Elimina la venta
     await Venta.findByIdAndDelete(saleId);
 
-    res.status(200).json({ message: 'Venta archivada y cantidades restauradas' });
+    res
+      .status(200)
+      .json({ message: "Venta archivada y cantidades restauradas" });
   } catch (error) {
     console.error('Error processing request:', error);
     res.status(500).json({ message: 'Server error' });
