@@ -146,56 +146,81 @@ function InventoryPage() {
   const handlePrint = () => {
     const printContent = `
       <html>
-        <head>
-          <title>Receipt</title>
-          <style>
-            body { font-family: Arial, sans-serif; }
-            table { width: 100%; border-collapse: collapse; }
-            th, td { border: 1px solid #ddd; padding: 10px; }
-          </style>
-        </head>
-        <body>
-          <h2>Receipt</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <thead>
-              <tr>
-                <th style="border: 1px solid #ddd; padding: 10px; background-color: #f4f4f4; text-align: left;">Cantidad</th>
-                <th style="border: 1px solid #ddd; padding: 10px; background-color: #f4f4f4; text-align: left;">Artículo</th>
-                <th style="border: 1px solid #ddd; padding: 10px; background-color: #f4f4f4; text-align: left;">Precio Unitario</th>
-                <th style="border: 1px solid #ddd; padding: 10px; background-color: #f4f4f4; text-align: left;">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${currentSale
-                .map(
-                  (item) => `
-                <tr>
-                  <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">${
-                    item.cantidad
-                  }</td>
-                  <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">${
-                    item.nombre
-                  }</td>
-                  <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">$${
-                    item.precio_unitario
-                  }</td>
-                  <td style="border: 1px solid #ddd; padding: 10px; text-align: left;">$${(
-                    item.precio_unitario * item.cantidad
-                  ).toFixed(2)}</td>
-                </tr>
-              `
-                )
-                .join("")}
-              <tr>
-                <td colspan="3" style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>Total</strong></td>
-                <td style="border: 1px solid #ddd; padding: 10px; text-align: left;"><strong>$${total}</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </body>
+      <head>
+        <title>Recibo</title>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            width: 300px; /* Ancho típico de una impresora térmica */
+            margin: 0 auto;
+            padding: 10px;
+          }
+          h2, h3 {
+            text-align: center;
+            margin: 5px 0;
+          }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+          }
+          th, td {
+            border: 1px solid #ddd;
+            padding: 5px;
+            text-align: left;
+          }
+          th {
+            background-color: #f4f4f4;
+          }
+          .footer {
+            text-align: center;
+            margin-top: 10px;
+          }
+        </style>
+      </head>
+      <body>
+        <h2>Super Farmacia Tony</h2>
+        <h3>Tel: (809) 595-5000</h3>
+        <h3>Av. Sabana Larga 38</h3>
+        <h3>Santo Domingo Este</h3>
+        <hr>
+        <h2>Recibo</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Cantidad</th>
+              <th>Artículo</th>
+              <th>Precio Unitario</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se insertan los datos dinámicos de la venta -->
+            ${currentSale
+              .map(
+                (item) => `
+            <tr>
+              <td>${item.cantidad}</td>
+              <td>${item.nombre}</td>
+              <td>$${item.precio_unitario.toFixed(2)}</td>
+              <td>$${(item.precio_unitario * item.cantidad).toFixed(2)}</td>
+            </tr>
+            `
+              )
+              .join("")}
+            <tr>
+              <td colspan="3"><strong>Total</strong></td>
+              <td><strong>$${total.toFixed(2)}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="footer">
+          <p>Gracias por su compra</p>
+        </div>
+      </body>
       </html>
-    `;
-    const printWindow = window.open("", "", "width=600,height=400");
+      `;
+    const printWindow = window.open("", "", "width=320,height=400");
     printWindow.document.write(printContent);
     printWindow.document.close();
     printWindow.print();
