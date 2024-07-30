@@ -129,7 +129,7 @@ function InventoryPage() {
   };
 
   const handleGoToInicio = () => {
-    navigate("/inicio");
+    navigate("/");
   };
 
   const total = currentSale

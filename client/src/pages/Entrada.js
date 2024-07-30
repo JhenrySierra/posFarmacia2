@@ -110,9 +110,9 @@ function InventoryPage() {
     }
   };
 
-  const handleGoToInicio = () => {
-    navigate("/inicio");
-  };
+ const handleGoToInicio = () => {
+   navigate("/");
+ };
 
   return (
     <div style={containerStyle}>

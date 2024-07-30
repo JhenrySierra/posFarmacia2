@@ -30,9 +30,9 @@ function SalesReportPage() {
       .catch((error) => console.error(error));
   };
 
-  const handleGoToInicio = () => {
-    navigate("/inicio"); // Navigate to the Home page
-  };
+ const handleGoToInicio = () => {
+   navigate("/");
+ };
 
 const handleArchiveSale = (saleId) => {
   axios
