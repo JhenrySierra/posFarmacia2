@@ -80,7 +80,7 @@ const Inicio = () => {
       <div style={dateStyle}>Fecha: {currentDate}</div>
       <div style={linkContainerStyle}>
         <Link
-          to="../"
+          to="../productos"
           style={linkStyle}
           onMouseOver={(e) =>
             (e.currentTarget.style.backgroundColor = "#45a049")
