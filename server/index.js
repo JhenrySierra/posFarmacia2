@@ -9,6 +9,9 @@ const port = process.env.PORT || 5000;
 const inventoryRoutes = require("./routes/productos"); // Ensure this is the correct path
 const salesRoutes = require("./routes/ventas");
 
+const uri = process.env.URI
+console.log(uri)
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -16,7 +19,7 @@ app.use("/api/productos", inventoryRoutes); // Updated route for productos
 app.use("/api/ventas", salesRoutes); // Adjust if necessary
 
 mongoose.connect(
-  "mongodb+srv://jhenrims:adminfarmacia@clusterfarmacia.jdbghzi.mongodb.net/farmacia?retryWrites=true&w=majority",
+  uri,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
