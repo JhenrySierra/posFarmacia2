@@ -99,7 +99,7 @@ const handleArchiveSale = (saleId) => {
   const totalSales = sales.reduce((acc, sale) => acc + sale.total, 0);
 
   return (
-    <div style={containerStyle} className="animate__fadeIn">
+    <div style={containerStyle} className="animate__animated animate__fadeIn">
       <h1>REPORTE DE VENTAS</h1>
       <button
         onClick={handleGoToInicio}

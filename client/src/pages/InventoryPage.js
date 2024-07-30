@@ -228,7 +228,7 @@ function InventoryPage() {
   };
 
   return (
-    <div style={containerStyle} className="animate__fadeIn">
+    <div style={containerStyle} className="animate__animated animate__fadeIn">
       <div style={{ width: "60%" }}>
         <div>
           <h1>INVENTARIO</h1>

@@ -72,22 +72,22 @@ const Inicio = () => {
 
   return (
     <div style={containerStyle}>
-      <div style={titleStyle} className="animate__fadeInDown">
+      <div style={titleStyle} className="animate__animated animate__fadeInDown">
         Super Farmacia Tony
       </div>
       <img
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYXdYKSoRHZC29qSTe3sYoZ1d3kQ1jQad3Lw&s"
         alt="Pharmacy Logo"
         style={logoStyle}
-        className="animate__fadeInDown"
+        className="animate__animated animate__zoomIn"
       />
-      <div style={dateStyle}>
-        Fecha: {currentDate} className="animate__fadeInDown"
+      <div style={dateStyle} className="animate__animated animate__fadeInDown">
+        Fecha: {currentDate}
       </div>
       <div style={linkContainerStyle}>
         <Link
           to="../productos"
-          className="animate__zoomIn"
+          className="animate__animated animate__zoomIn"
           style={linkStyle}
           onMouseOver={(e) =>
             (e.currentTarget.style.backgroundColor = "#45a049")
@@ -107,7 +107,7 @@ const Inicio = () => {
         <Link
           to="../reporte-ventas"
           style={linkStyle}
-          className="animate__zoomIn"
+          className="animate__animated animate__zoomIn"
           onMouseOver={(e) =>
             (e.currentTarget.style.backgroundColor = "#45a049")
           }
@@ -125,7 +125,7 @@ const Inicio = () => {
         <Link
           to="../entrada"
           style={linkStyle}
-          className="animate__zoomIn"
+          className="animate__animated animate__zoomIn"
           onMouseOver={(e) =>
             (e.currentTarget.style.backgroundColor = "#45a049")
           }
