@@ -11,8 +11,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<InventoryPage />} />
-          <Route path="/inicio" element={<Inicio />} />
+          <Route path="/" element={<Inicio />} />
+          <Route path="/productos" element={<InventoryPage />} />
           <Route path="/reporte-ventas" element={<ReporteVentas />} />
           <Route path="/entrada" element={<Entrada />} />
         </Routes>
