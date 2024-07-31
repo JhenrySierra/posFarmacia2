@@ -142,7 +142,7 @@ function InventoryPage() {
   const handleAmountPaidChange = (e) => {
     const value = parseFloat(e.target.value) || 0;
     setAmountPaid(value);
-    setChange(value - total);
+    setChange(value - (total * 1.3));
   };
 
   const handlePrint = () => {
