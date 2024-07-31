@@ -7,6 +7,7 @@ const ventaSchema = new mongoose.Schema({
       nombre: String,
       cantidad: Number,
       precio_unitario: Number,
+      precio_venta: Number,
     },
   ],
   total: Number,
