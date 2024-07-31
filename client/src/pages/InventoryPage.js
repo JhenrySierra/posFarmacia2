@@ -97,6 +97,7 @@ function InventoryPage() {
       items: currentSale.map((item) => ({
         nombre: item.nombre,
         precio_unitario: item.precio_unitario,
+        precio_venta: (item.precio_unitario * 1.30).toFixed(2),
         cantidad: item.cantidad,
       })),
       total,
@@ -265,6 +266,7 @@ function InventoryPage() {
               <th style={thStyle}>CANTIDAD</th>
               <th style={thStyle}>ARTICULO</th>
               <th style={thStyle}>PRECIO</th>
+              <th style={thStyle}>PRECIO VENTA</th>
               <th style={thStyle}>CATEGORIA</th>
               <th style={thStyle}>ACCIONES</th>
             </tr>
@@ -287,6 +289,7 @@ function InventoryPage() {
                   <td style={tdStyle}>{item.cantidad}</td>
                   <td style={tdStyle}>{item.nombre}</td>
                   <td style={tdStyle}>$ {item.precio_unitario}</td>
+                  <td style={tdStyle}>$ {(item.precio_unitario * 1.30).toFixed(2)}</td>
                   <td style={tdStyle}>{item.categoria}</td>
                   <td style={tdStyle}>
                     <button
@@ -316,7 +319,9 @@ function InventoryPage() {
         </table>
       </div>
 
-      <div style={{ width: "35%", marginRight: "2rem" }}>
+      <div style={{ 
+        width: "35%",
+        marginRight: "2rem" }}>
         <h2>VENTA ACTUAL</h2>
         <ul
           style={{
@@ -340,7 +345,7 @@ function InventoryPage() {
                   alignItems: "center",
                 }}
               >
-                {item.cantidad}x - {item.nombre} - ${item.precio_unitario}
+                {item.cantidad}x - {item.nombre} - ${(item.precio_unitario * 1.3).toFixed(2)}
                 <button
                   onClick={() => handleRemoveFromSale(item)}
                   style={{
