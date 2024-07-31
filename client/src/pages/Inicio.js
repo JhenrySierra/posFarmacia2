@@ -66,7 +66,7 @@ const Inicio = () => {
     bottom: 0,
     left: 50,
     color: "black",
-    textAlign: "center",
+    textAlign: "left",
     padding: "10px 0",
   };
 
