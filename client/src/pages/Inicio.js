@@ -65,10 +65,9 @@ const Inicio = () => {
     position: "fixed",
     bottom: 0,
     left: 50,
-    color: "black",
+    color: "white",
     textAlign: "left",
-    padding: "10px 0",
-    color: "white"
+    padding: "10px 0"
   };
 
   return (
