@@ -135,7 +135,7 @@ function InventoryPage() {
   };
 
   const total = currentSale
-    .reduce((acc, item) => acc + item.precio_unitario * item.cantidad, 0)
+    .reduce((acc, item) => acc + (item.precio_unitario * 1.3) * item.cantidad, 0)
     .toFixed(2)
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
