@@ -14,7 +14,7 @@ const Inicio = () => {
     padding: "50px",
     background:
       "radial-gradient(circle, rgba(0,80,128,1) 0%, rgba(82,159,205,1) 100%)",
-    height: "85vh",
+    height: "100vh",
     color: "#fff", // Make text white for better contrast
   };
 
