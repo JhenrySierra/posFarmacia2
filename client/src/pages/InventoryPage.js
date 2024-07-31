@@ -375,7 +375,7 @@ function InventoryPage() {
             marginBottom: "10px",
           }}
         >
-          TOTAL: ${total}
+          TOTAL: ${(total * 1.30).toFixed(2)}
         </div>
         <div
           style={{
