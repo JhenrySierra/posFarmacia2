@@ -204,8 +204,8 @@ function InventoryPage() {
             <tr>
               <td>${item.cantidad}</td>
               <td>${item.nombre}</td>
-              <td>$${item.precio_unitario.toFixed(2)}</td>
-              <td>$${(item.precio_unitario * item.cantidad).toFixed(2)}</td>
+              <td>$${item.precio_venta.toFixed(2)}</td>
+              <td>$${(item.precio_venta * item.cantidad).toFixed(2)}</td>
             </tr>
             `
               )
@@ -263,12 +263,12 @@ function InventoryPage() {
         <table style={tableStyle}>
           <thead>
             <tr>
-              <th style={thStyle}>CANTIDAD</th>
+              <th style={thStyle}>CANT.</th>
               <th style={thStyle}>ARTICULO</th>
-              <th style={thStyle}>PRECIO</th>
+              <th style={thStyle}>COSTO</th>
               <th style={thStyle}>PRECIO VENTA</th>
               <th style={thStyle}>CATEGORIA</th>
-              <th style={thStyle}>ACCIONES</th>
+              <th style={thStyle}>ACC.</th>
             </tr>
           </thead>
           <tbody>
@@ -303,7 +303,7 @@ function InventoryPage() {
                         cursor: "pointer",
                       }}
                     >
-                      AGREGAR
+                      +
                     </button>
                   </td>
                 </tr>
