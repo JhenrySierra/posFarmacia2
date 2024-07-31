@@ -20,7 +20,7 @@ function InventoryPage() {
   }, []);
 
   const containerStyle = {
-    width: "90%",
+    width: "100%",
     margin: "0 auto",
     padding: "20px",
     display: "flex",
@@ -316,7 +316,7 @@ function InventoryPage() {
         </table>
       </div>
 
-      <div style={{ width: "35%" }}>
+      <div style={{ width: "35%", marginRight: "2rem" }}>
         <h2>VENTA ACTUAL</h2>
         <ul
           style={{
