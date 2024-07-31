@@ -68,6 +68,7 @@ const Inicio = () => {
     color: "black",
     textAlign: "left",
     padding: "10px 0",
+    color: "white"
   };
 
   return (
