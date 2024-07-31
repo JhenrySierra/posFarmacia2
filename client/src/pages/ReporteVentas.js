@@ -180,17 +180,17 @@ const handleArchiveSale = (saleId) => {
                     __html: sale.items
                       .map(
                         (item) =>
-                          `${item.cantidad} x ${item.nombre} $${item.precio_unitario}`
+                          `${item.cantidad} x ${item.nombre} $${(item.precio_unitario * 1.3).toFixed(2)}`
                       )
                       .join("<br />"),
                   }}
                 ></td>
                 <td style={tdStyle}>
                   $
-                  {sale.total.toLocaleString("en-US", {
+                  {(sale.total.toLocaleString("en-US", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
-                  })}
+                  }) * 1.3).toFixed(2)}
                 </td>
                 <td style={tdStyle}>
                   <button
