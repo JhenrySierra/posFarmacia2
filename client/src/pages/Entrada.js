@@ -151,7 +151,8 @@ function InventoryPage() {
             <tr>
               <th style={thStyle}>CANTIDAD</th>
               <th style={thStyle}>ARTICULO</th>
-              <th style={thStyle}>PRECIO</th>
+              <th style={thStyle}>COSTO</th>
+              <th style={thStyle}>PRECIO VENTA</th>
               <th style={thStyle}>CATEGORIA</th>
               <th style={thStyle}>ACCIONES</th>
             </tr>
@@ -174,6 +175,7 @@ function InventoryPage() {
                   <td style={tdStyle}>{item.cantidad}</td>
                   <td style={tdStyle}>{item.nombre}</td>
                   <td style={tdStyle}>${item.precio_unitario}</td>
+                  <td style={tdStyle}>${(item.precio_unitario * 1.30).toFixed(2)}</td>
                   <td style={tdStyle}>{item.categoria}</td>
                   <td style={tdStyle}>
                     <button
