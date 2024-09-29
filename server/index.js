@@ -33,7 +33,7 @@ db.once("open", () => {
 });
 
 db.on("error", (err) => {
-  console.error("MongoDB connection error:", err);
+  console.error("MongoDB connection error:::", err);
 });
 
 app.listen(port, () => {
