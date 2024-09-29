@@ -3,8 +3,8 @@ import axios from "axios";
 import "animate.css";
 import { useNavigate } from "react-router-dom";
 
-// axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/";
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://pos-farmacia2-api.vercel.app/";
+// axios.defaults.baseURL = "http://localhost:5000/";
 
 function EditarInventario() {
   const [items, setItems] = useState([]);
