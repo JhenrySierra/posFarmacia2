@@ -134,8 +134,12 @@ function InventoryPage() {
     navigate("/");
   };
 
-  const total = currentSale
-    .reduce((acc, item) => acc + (item.precio_unitario) * item.cantidad, 0)
+const total = currentSale
+    .reduce((acc, item) => {
+        const price = parseFloat(item.precio_unitario) || 0;
+        const quantity = parseFloat(item.cantidad) || 0;
+        return acc + (price * quantity);
+    }, 0)
     .toFixed(2)
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
